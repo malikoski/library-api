@@ -1,0 +1,11 @@
+{
+  "language": "java",
+  "os": [
+    "linux"
+  ],
+  "dist": "xenial",
+  "sudo": false,
+  "jdk": [
+    "oraclejdk11"
+  ]
+}
