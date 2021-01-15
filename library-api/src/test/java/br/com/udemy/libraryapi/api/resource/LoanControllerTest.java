@@ -8,6 +8,7 @@ import br.com.udemy.libraryapi.model.Book;
 import br.com.udemy.libraryapi.model.Loan;
 import br.com.udemy.libraryapi.model.repository.BookRepositoryTest;
 import br.com.udemy.libraryapi.service.BookService;
+import br.com.udemy.libraryapi.service.EmailService;
 import br.com.udemy.libraryapi.service.LoanService;
 import br.com.udemy.libraryapi.service.LoanServiceTest;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -60,6 +61,9 @@ public class LoanControllerTest {
 
     @MockBean
     private LoanService loanService;
+
+    @MockBean
+    EmailService emailService;
 
     @Test
     @DisplayName("Deve realizar um empréstimo")

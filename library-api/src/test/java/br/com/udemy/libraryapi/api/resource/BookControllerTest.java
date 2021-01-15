@@ -4,6 +4,8 @@ import br.com.udemy.libraryapi.api.dto.BookDTO;
 import br.com.udemy.libraryapi.api.exception.BusinessException;
 import br.com.udemy.libraryapi.model.Book;
 import br.com.udemy.libraryapi.service.BookService;
+import br.com.udemy.libraryapi.service.EmailService;
+import br.com.udemy.libraryapi.service.LoanService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -45,6 +47,12 @@ public class BookControllerTest {
 
     @MockBean
     BookService bookService;
+
+    @MockBean
+    LoanService loanService;
+
+    @MockBean
+    EmailService emailService;
 
     @Test
     @DisplayName("Deve criar um livro com sucesso")
@@ -221,7 +229,8 @@ public class BookControllerTest {
         MockHttpServletRequestBuilder request = MockMvcRequestBuilders
                 .put(BOOK_API.concat("/" + 1))
                 .accept(MediaType.APPLICATION_JSON)
-                .contentType(MediaType.APPLICATION_JSON);
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(json);
 
         mockMvc
                 .perform(request)
@@ -234,7 +243,7 @@ public class BookControllerTest {
     }
 
     @Test
-    @DisplayName("Deve retornar 404 ao tentar atualizar um livro existente")
+    @DisplayName("Deve retornar 404 ao tentar atualizar um livro inexistente")
     public void updateNotFoundBookTest() throws Exception {
 
         var json = new ObjectMapper().writeValueAsString(createNewBook());
@@ -244,7 +253,8 @@ public class BookControllerTest {
         MockHttpServletRequestBuilder request = MockMvcRequestBuilders
                 .put(BOOK_API.concat("/" + 1))
                 .accept(MediaType.APPLICATION_JSON)
-                .contentType(MediaType.APPLICATION_JSON);
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(json);
 
 
         mockMvc
