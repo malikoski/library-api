@@ -4,4 +4,6 @@ jdk:
 dist: trusty
 before_script:
   - cd library-api
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
 
