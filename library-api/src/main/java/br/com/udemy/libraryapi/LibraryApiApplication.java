@@ -3,20 +3,17 @@ package br.com.udemy.libraryapi;
 import br.com.udemy.libraryapi.service.EmailService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
-import java.util.Arrays;
-
 @SpringBootApplication
 @EnableScheduling
 public class LibraryApiApplication {
 
-	@Autowired
-	private EmailService emailService;
+/*	@Autowired
+	private EmailService emailService;*/
 
 	@Bean
 	public ModelMapper modelMappepr() {
